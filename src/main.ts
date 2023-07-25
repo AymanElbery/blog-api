@@ -4,7 +4,7 @@ import * as cors from "cors";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const allowedOrigins = ["http://localhost:3000"];
+  const allowedOrigins = ["https://asker-blog-51935e59f69c.herokuapp.com/"];
 
   app.use(
     cors({
