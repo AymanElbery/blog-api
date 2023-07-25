@@ -6,15 +6,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const allowedOrigins = ["https://asker-blog-51935e59f69c.herokuapp.com/"];
 
+
+
   app.use(
     cors({
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);
-        } else {
-          callback(new Error("Not allowed by CORS"));
-        }
-      },
+      origin: "https://asker-blog-51935e59f69c.herokuapp.com/", 
+      credentials: true,
     })
   );
 
