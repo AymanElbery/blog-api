@@ -10,10 +10,21 @@ async function bootstrap() {
 
   app.use(
     cors({
-      origin: "https://asker-blog-51935e59f69c.herokuapp.com/", 
-      credentials: true,
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
     })
   );
+  
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+    credentials: true,
+  });
 
   await app.listen(process.env.PORT || 4000);
 }
