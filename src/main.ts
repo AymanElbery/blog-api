@@ -9,22 +9,18 @@ async function bootstrap() {
 
 
   app.use(
-    cors({
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);
-        } else {
-          callback(new Error("Not allowed by CORS"));
-        }
-      },
-    })
+    // cors({
+    //   origin: (origin, callback) => {
+    //     if (!origin || allowedOrigins.includes(origin)) {
+    //       callback(null, true);
+    //     } else {
+    //       callback(new Error("Not allowed by CORS"));
+    //     }
+    //   },
+    // })
   );
-  
-  app.enableCors({
-    allowedHeaders: '*',
-    origin: '*',
-    credentials: true,
-  });
+
+  app.enableCors();
 
   await app.listen(process.env.PORT || 4000);
 }
