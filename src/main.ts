@@ -9,19 +9,19 @@ async function bootstrap() {
 
 
   app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS, FETCH"
+    );
+    
     next();
-  }
-    // cors({
-    //   origin: (origin, callback) => {
-    //     if (!origin || allowedOrigins.includes(origin)) {
-    //       callback(null, true);
-    //     } else {
-    //       callback(new Error("Not allowed by CORS"));
-    //     }
-    //   },
-    // })
-  );
+  });
+
 
   //app.enableCors();
 
