@@ -8,7 +8,10 @@ async function bootstrap() {
 
 
 
-  app.use(
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  }
     // cors({
     //   origin: (origin, callback) => {
     //     if (!origin || allowedOrigins.includes(origin)) {
@@ -20,7 +23,7 @@ async function bootstrap() {
     // })
   );
 
-  app.enableCors();
+  //app.enableCors();
 
   await app.listen(process.env.PORT || 4000);
 }
